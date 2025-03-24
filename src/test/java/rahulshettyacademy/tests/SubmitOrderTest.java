@@ -36,17 +36,13 @@ public class SubmitOrderTest extends BaseTest {
    
     @Test(dataProvider="getData",groups= {"Purchase"})
     public  void submitOrder(HashMap<String,String> input) throws IOException {
-	System.out.println("Landing Page");
 	ProductCatalouge productcatalouge=landingPage.lognApplicaton(input.get("email"),input.get("password")); 
-	System.out.println("Product Catalouge Page");	
 	List<WebElement> selectedProducts=productcatalouge.getProductList();
 	productcatalouge.addProductToCart(input.get("product"));
 	CartPage cartPage=productcatalouge.goToCartPage();
-	System.out.println("Cart Page");
 	Boolean match=cartPage.verifyProductDisplay(input.get("product"));
 	Assert.assertTrue(match);
 	CheckoutPage checkoutPage=cartPage.goToCheckout();
-	System.out.println("Checkout Page");
 	checkoutPage.selectCountry("india");
 	ConfirmationPage confirmationPage=checkoutPage.submitOrder();
 	String confirmMessage=confirmationPage.getConfirmationMessage();

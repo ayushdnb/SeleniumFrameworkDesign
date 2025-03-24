@@ -32,7 +32,7 @@ public class ErrorValidationsTest extends BaseTest {
 	System.out.println("Landing Page");
 	landingPage.lognApplicaton("a113bc@gmail.com","Rahu2lshetty@1"); 
 	System.out.println(landingPage.getErrorMessage());
-	Assert.assertEquals("Incorrect email password.",landingPage.getErrorMessage());	
+	Assert.assertEquals("Incorrect email or password.",landingPage.getErrorMessage());	
     }
     
     @Test
